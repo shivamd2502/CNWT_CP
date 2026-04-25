@@ -1,0 +1,250 @@
+🧪 1. Mixed Router Failure
+
+"All devices at home suddenly lost internet, WiFi is connected but nothing loads and even router settings page is not opening."
+
+🧪 2. Subtle DNS Issue
+
+"Internet seems fine but every website says it can't be reached unless I use the IP address directly."
+
+🧪 3. DNS Timeout (tricky)
+
+"Web pages take forever to load and sometimes eventually open, but ping to 8.8.8.8 works instantly."
+
+🧪 4. IP Conflict (real-world style)
+
+"My laptop keeps disconnecting randomly and sometimes shows 'another device is using this IP address' warning."
+
+🧪 5. DHCP Failure (edge case)
+
+"My system shows limited connectivity and the IP starts with 169 even after reconnecting multiple times."
+
+🧪 6. Gateway Unreachable (confusable with router issue)
+
+"I checked my IP settings and everything looks fine but I cannot ping my gateway at all."
+
+🧪 7. Network Adapter Issue (hardware-like)
+
+"My ethernet cable is plugged in but my computer says no network devices found."
+
+🧪 8. Subnet Mismatch (advanced case)
+
+"I manually set an IP but I still can't reach the gateway even though both are in the same range."
+
+🧪 9. Hybrid Case (hard for model)
+
+"WiFi connects, I get an IP, I can ping the router, but websites are inconsistent and sometimes fail to load."
+
+👉 This tests confusion between:
+
+DNS Issue
+DNS Timeout
+🧪 10. Another Hybrid Case
+
+"After changing router settings, none of my devices can access the internet but they all show connected."
+
+👉 Could confuse:
+
+Router Issue
+Gateway Unreachable
+🧪 11. Advanced Diagnostic Input
+
+"Traceroute stops at first hop and I cannot reach any external IP, but my device has a valid IP."
+
+🧪 12. OS-style Input (real logs)
+
+"ipconfig shows valid IP but default gateway is missing and I get network unreachable errors."
+
+🧪 13. Real User Complaint Style
+
+"Internet was working fine but suddenly stopped, restarting laptop didn't help, other devices also affected."
+
+🧪 14. DNS Misleading Case
+
+"Google sometimes loads but other websites fail, and nslookup gives inconsistent results."
+
+🧪 15. Adapter + DHCP confusion
+
+"WiFi connects but shows 'No Internet', and renewing IP doesn't assign anything new."
+
+
+
+
+#########################################################################################################################################################################################################
+🧪 1. Mixed Router Failure
+
+Symptom:
+“All devices at home suddenly lost internet…”
+
+Fill this:
+
+Ping Gateway → ❌ No
+Has IP → ✅ Yes
+Ping External IP → ❌ No
+Access Websites → ❌ No
+IP Conflict → ❌ No
+ARP Table → ✅ Yes
+Subnet Match → ✅ Yes
+DNS Time → 2000
+Packet Loss → 90
+Traceroute Hops → 1
+Network → WiFi
+OS → Windows
+🧪 2. DNS Issue
+Ping Gateway → ✅ Yes
+Has IP → ✅ Yes
+Ping External IP → ✅ Yes
+Access Websites → ❌ No
+IP Conflict → ❌ No
+ARP Table → ✅ Yes
+Subnet Match → ✅ Yes
+DNS Time → 150
+Packet Loss → 2
+Traceroute Hops → 10
+🧪 3. DNS Timeout
+Ping Gateway → ✅ Yes
+Has IP → ✅ Yes
+Ping External IP → ✅ Yes
+Access Websites → ❌ No
+IP Conflict → ❌ No
+ARP Table → ✅ Yes
+Subnet Match → ✅ Yes
+DNS Time → 15000 ⚠️ (key feature)
+Packet Loss → 5
+Traceroute Hops → 12
+🧪 4. IP Conflict
+Ping Gateway → ❌ No
+Has IP → ✅ Yes
+Ping External IP → ❌ No
+Access Websites → ❌ No
+IP Conflict → ✅ Yes 🔥
+ARP Table → ❌ No
+Subnet Match → ✅ Yes
+DNS Time → 1200
+Packet Loss → 40
+Traceroute Hops → 2
+🧪 5. DHCP Failure
+Ping Gateway → ❌ No
+Has IP → ❌ No 🔥
+Ping External IP → ❌ No
+Access Websites → ❌ No
+IP Conflict → ❌ No
+ARP Table → ✅ Yes
+Subnet Match → ❌ No
+DNS Time → 500
+Packet Loss → 95
+Traceroute Hops → 0
+🧪 6. Gateway Unreachable
+Ping Gateway → ❌ No 🔥
+Has IP → ✅ Yes
+Ping External IP → ❌ No
+Access Websites → ❌ No
+IP Conflict → ❌ No
+ARP Table → ✅ Yes
+Subnet Match → ✅ Yes
+DNS Time → 1200
+Packet Loss → 95
+Traceroute Hops → 1
+🧪 7. Network Adapter Issue
+Ping Gateway → ❌ No
+Has IP → ❌ No 🔥
+Ping External IP → ❌ No
+Access Websites → ❌ No
+IP Conflict → ❌ No
+ARP Table → ❌ No 🔥
+Subnet Match → ❌ No
+DNS Time → 0
+Packet Loss → 100
+Traceroute Hops → 0
+🧪 8. Subnet Mismatch
+Ping Gateway → ❌ No
+Has IP → ✅ Yes
+Ping External IP → ❌ No
+Access Websites → ❌ No
+IP Conflict → ❌ No
+ARP Table → ✅ Yes
+Subnet Match → ❌ No 🔥
+DNS Time → 800
+Packet Loss → 95
+Traceroute Hops → 0
+🧪 9. Hybrid (DNS Issue vs Timeout)
+Ping Gateway → ✅ Yes
+Has IP → ✅ Yes
+Ping External IP → ✅ Yes
+Access Websites → ❌ No
+IP Conflict → ❌ No
+ARP Table → ✅ Yes
+Subnet Match → ✅ Yes
+DNS Time → 3000 ⚠️ borderline
+Packet Loss → 3
+Traceroute Hops → 10
+🧪 10. Router vs Gateway Confusion
+Ping Gateway → ❌ No
+Has IP → ✅ Yes
+Ping External IP → ❌ No
+Access Websites → ❌ No
+IP Conflict → ❌ No
+ARP Table → ✅ Yes
+Subnet Match → ✅ Yes
+DNS Time → 2000
+Packet Loss → 80
+Traceroute Hops → 1
+🧪 11. Advanced (Traceroute case)
+Ping Gateway → ❌ No
+Has IP → ✅ Yes
+Ping External IP → ❌ No
+Access Websites → ❌ No
+IP Conflict → ❌ No
+ARP Table → ✅ Yes
+Subnet Match → ✅ Yes
+DNS Time → 1000
+Packet Loss → 90
+Traceroute Hops → 1 🔥
+🧪 12. Missing Gateway (OS case)
+Ping Gateway → ❌ No
+Has IP → ✅ Yes
+Ping External IP → ❌ No
+Access Websites → ❌ No
+IP Conflict → ❌ No
+ARP Table → ✅ Yes
+Subnet Match → ✅ Yes
+DNS Time → 800
+Packet Loss → 90
+Traceroute Hops → 1
+🧪 13. Real User Case
+Ping Gateway → ❌ No
+Has IP → ✅ Yes
+Ping External IP → ❌ No
+Access Websites → ❌ No
+IP Conflict → ❌ No
+ARP Table → ✅ Yes
+Subnet Match → ✅ Yes
+DNS Time → 1500
+Packet Loss → 85
+Traceroute Hops → 1
+🧪 14. DNS Misleading
+Ping Gateway → ✅ Yes
+Has IP → ✅ Yes
+Ping External IP → ✅ Yes
+Access Websites → ❌ No
+IP Conflict → ❌ No
+ARP Table → ✅ Yes
+Subnet Match → ✅ Yes
+DNS Time → 5000 ⚠️
+Packet Loss → 2
+Traceroute Hops → 12
+🧪 15. Adapter + DHCP Confusion
+Ping Gateway → ❌ No
+Has IP → ❌ No
+Ping External IP → ❌ No
+Access Websites → ❌ No
+IP Conflict → ❌ No
+ARP Table → ❌ No
+Subnet Match → ❌ No
+DNS Time → 0
+Packet Loss → 100
+Traceroute Hops → 0
+
+
+
+
+ok now currently now i am well known with the network_troubleshooting_dataset.py ,network_troubleshooting_training.py  and app_streamlit.py but now i am confused with rule_based_engine.py ,bayesian_fusion.py ,rf_uncertainity.py and hybrid_system.py like what their function is ?  how they are working ? and what is the siginificance of each file and in the final output that is the classification of each  network problem what they are contributing

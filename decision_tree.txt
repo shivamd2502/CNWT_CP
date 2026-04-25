@@ -1,0 +1,94 @@
+DECISION TREE RULES
+======================================================================
+
+|--- has_ip <= 0.50
+|   |--- ip_conflict <= 0.50
+|   |   |--- ping_gateway <= 0.50
+|   |   |   |--- os_type <= 0.50
+|   |   |   |   |--- ping_domain <= 0.50
+|   |   |   |   |   |--- class: Network Adapter Issue
+|   |   |   |   |--- ping_domain >  0.50
+|   |   |   |   |   |--- class: Network Adapter Issue
+|   |   |   |--- os_type >  0.50
+|   |   |   |   |--- ping_domain <= 0.50
+|   |   |   |   |   |--- class: DHCP Failure
+|   |   |   |   |--- ping_domain >  0.50
+|   |   |   |   |   |--- class: DHCP Failure
+|   |   |--- ping_gateway >  0.50
+|   |   |   |--- ping_domain <= 0.50
+|   |   |   |   |--- network_type <= 0.50
+|   |   |   |   |   |--- class: DHCP Failure
+|   |   |   |   |--- network_type >  0.50
+|   |   |   |   |   |--- class: DHCP Failure
+|   |   |   |--- ping_domain >  0.50
+|   |   |   |   |--- recently_updated <= 0.50
+|   |   |   |   |   |--- class: DHCP Failure
+|   |   |   |   |--- recently_updated >  0.50
+|   |   |   |   |   |--- class: DHCP Failure
+|   |--- ip_conflict >  0.50
+|   |   |--- ping_gateway <= 0.50
+|   |   |   |--- ping_ip <= 0.50
+|   |   |   |   |--- os_type <= 0.50
+|   |   |   |   |   |--- class: Network Adapter Issue
+|   |   |   |   |--- os_type >  0.50
+|   |   |   |   |   |--- class: Network Adapter Issue
+|   |   |   |--- ping_ip >  0.50
+|   |   |   |   |--- network_type <= 0.50
+|   |   |   |   |   |--- class: Network Adapter Issue
+|   |   |   |   |--- network_type >  0.50
+|   |   |   |   |   |--- class: Network Adapter Issue
+|   |   |--- ping_gateway >  0.50
+|   |   |   |--- ping_domain <= 0.50
+|   |   |   |   |--- vpn_enabled <= 0.50
+|   |   |   |   |   |--- class: DNS Issue
+|   |   |   |   |--- vpn_enabled >  0.50
+|   |   |   |   |   |--- class: DNS Issue
+|   |   |   |--- ping_domain >  0.50
+|   |   |   |   |--- class: IP Conflict
+|--- has_ip >  0.50
+|   |--- ping_gateway <= 0.50
+|   |   |--- ip_conflict <= 0.50
+|   |   |   |--- ping_ip <= 0.50
+|   |   |   |   |--- vpn_enabled <= 0.50
+|   |   |   |   |   |--- class: Gateway Unreachable
+|   |   |   |   |--- vpn_enabled >  0.50
+|   |   |   |   |   |--- class: Subnet Mismatch
+|   |   |   |--- ping_ip >  0.50
+|   |   |   |   |--- os_type <= 1.50
+|   |   |   |   |   |--- class: Gateway Unreachable
+|   |   |   |   |--- os_type >  1.50
+|   |   |   |   |   |--- class: Subnet Mismatch
+|   |   |--- ip_conflict >  0.50
+|   |   |   |--- ping_ip <= 0.50
+|   |   |   |   |--- os_type <= 1.50
+|   |   |   |   |   |--- class: IP Conflict
+|   |   |   |   |--- os_type >  1.50
+|   |   |   |   |   |--- class: Router Issue
+|   |   |   |--- ping_ip >  0.50
+|   |   |   |   |--- vpn_enabled <= 0.50
+|   |   |   |   |   |--- class: IP Conflict
+|   |   |   |   |--- vpn_enabled >  0.50
+|   |   |   |   |   |--- class: IP Conflict
+|   |--- ping_gateway >  0.50
+|   |   |--- vpn_enabled <= 0.50
+|   |   |   |--- ping_domain <= 0.50
+|   |   |   |   |--- ping_ip <= 0.50
+|   |   |   |   |   |--- class: DNS Issue
+|   |   |   |   |--- ping_ip >  0.50
+|   |   |   |   |   |--- class: DNS Issue
+|   |   |   |--- ping_domain >  0.50
+|   |   |   |   |--- ip_conflict <= 0.50
+|   |   |   |   |   |--- class: DNS Issue
+|   |   |   |   |--- ip_conflict >  0.50
+|   |   |   |   |   |--- class: DNS Issue
+|   |   |--- vpn_enabled >  0.50
+|   |   |   |--- ping_ip <= 0.50
+|   |   |   |   |--- firewall_enabled <= 0.50
+|   |   |   |   |   |--- class: Gateway Unreachable
+|   |   |   |   |--- firewall_enabled >  0.50
+|   |   |   |   |   |--- class: DNS Timeout
+|   |   |   |--- ping_ip >  0.50
+|   |   |   |   |--- ip_conflict <= 0.50
+|   |   |   |   |   |--- class: DNS Timeout
+|   |   |   |   |--- ip_conflict >  0.50
+|   |   |   |   |   |--- class: DNS Timeout

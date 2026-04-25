@@ -1,0 +1,89 @@
+Loading trained models...
+  DDPG Actor loaded from: ./checkpoints/DDPG_mu_origin.pt
+  TD3 Actor loaded from: ./checkpoints/TD3_mu_origin.pt
+
+==================================================
+  Testing on ISO 8608 Class-B Road
+==================================================
+  DDPG Results (Class B):
+    mean_vel_%: -10.4629%
+    q3_vel_%: -9.14963%
+    mean_acc_%: 10.55679%
+    q3_acc_%: 7.70322%
+  TD3 Results (Class B):
+    mean_vel_%: -10.4629%
+    q3_vel_%: -9.14963%
+    mean_acc_%: 10.55679%
+    q3_acc_%: 7.70322%
+  → Saved: comparison_class_B.png
+
+==================================================
+  Testing on ISO 8608 Class-C Road
+==================================================
+  DDPG Results (Class C):
+    mean_vel_%: -12.90024%
+    q3_vel_%: -10.04894%
+    mean_acc_%: 8.4678%
+    q3_acc_%: 8.45942%
+  TD3 Results (Class C):
+    mean_vel_%: -12.90024%
+    q3_vel_%: -10.04894%
+    mean_acc_%: 8.4678%
+    q3_acc_%: 8.45942%
+  → Saved: comparison_class_C.png
+
+==================================================
+  Testing on ISO 8608 Class-D Road
+==================================================
+  DDPG Results (Class D):
+    mean_vel_%: -17.50184%
+    q3_vel_%: -20.69795%
+    mean_acc_%: 6.12073%
+    q3_acc_%: 7.20572%
+  TD3 Results (Class D):
+    mean_vel_%: -17.50184%
+    q3_vel_%: -20.69795%
+    mean_acc_%: 6.12073%
+    q3_acc_%: 7.20572%
+  → Saved: comparison_class_D.png
+
+==================================================
+  Testing on ISO 8608 Class-E Road
+==================================================
+  DDPG Results (Class E):
+    mean_vel_%: -3.9286%
+    q3_vel_%: -2.39391%
+    mean_acc_%: 12.0131%
+    q3_acc_%: 11.51905%
+  TD3 Results (Class E):
+    mean_vel_%: -3.9286%
+    q3_vel_%: -2.39391%
+    mean_acc_%: 12.0131%
+    q3_acc_%: 11.51905%
+  → Saved: comparison_class_E.png
+
+
+================================================================================
+  RESULTS SUMMARY TABLE
+  % change relative to passive suspension (negative = improvement)
+================================================================================
+Road     Algorithm   Mean Vel%    Q3 Vel%  Mean Acc%    Q3 Acc%
+--------------------------------------------------------------------------------
+  B      DDPG           -10.46      -9.15      10.56       7.70
+  B      TD3            -10.46      -9.15      10.56       7.70
+----------------------------------------
+  C      DDPG           -12.90     -10.05       8.47       8.46
+  C      TD3            -12.90     -10.05       8.47       8.46
+----------------------------------------
+  D      DDPG           -17.50     -20.70       6.12       7.21
+  D      TD3            -17.50     -20.70       6.12       7.21
+----------------------------------------
+  E      DDPG            -3.93      -2.39      12.01      11.52
+  E      TD3             -3.93      -2.39      12.01      11.52
+----------------------------------------
+================================================================================
+
+All results saved to: results_summary.npy
+Reward files not found — skipping reward curve plot.
+(Train both DDPG and TD3 to generate this plot)
+
